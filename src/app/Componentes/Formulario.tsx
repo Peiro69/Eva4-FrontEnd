@@ -10,8 +10,8 @@ export const Formulario = () => {
     const [telefono, setTelefono] = useState("")
     const [edad, setEdad] = useState("")
     const [genero, setGenero] = useState("")
-    const [producto_fav, setProducto_fav] = useState("")
-    const [terminos_condiciones, setTerminos_condiciones] = useState("")
+    const [producto_fav, setProducto_fav] = useState("Jockey")
+    const [terminos_condiciones, setTerminos_condiciones] = useState("no")
 
 
     const registrar = ()=>{
@@ -26,11 +26,14 @@ export const Formulario = () => {
             producto_fav,
             terminos_condiciones
         }
-        console.log(s)
+        console.log(s.genero)
+        console.log(s.producto_fav)
+        console.log(s.terminos_condiciones)
         registrarSocios(s)
 
 
     } 
+
 
   return (
     <form className='text-center'>
@@ -60,23 +63,58 @@ export const Formulario = () => {
         value={edad}/><br />
 
         <label htmlFor="">Genero</label><br />
-        <input type="radio" name="check" id="g1" value="Hombre" />
+
+        <input type="radio" 
+        name="check" 
+        id="g1" 
+        onClick={(e)=>setGenero(e.target.value)}
+        value="Hombre" 
+        checked={genero == "Hombre" ? true:false}
+        />
         <label htmlFor="g1">Hombre</label><br />
 
-        <input type="radio" name="check" id="g2" value="Mujer"/>
+        <input type="radio" 
+        name="check" 
+        id="g2" 
+        onClick={(e)=>setGenero(e.target.value)}
+        value="Mujer"
+        checked={genero == "Mujer" ? true:false}
+        />
         <label htmlFor="g2">Mujer</label><br />
 
-        <input type="radio" name="check" id="g3" value="Reservado"/>
+        <input type="radio" 
+        name="check" 
+        id="g3" 
+        onClick={(e)=>setGenero(e.target.value)}
+        value="Reservado"
+        checked={genero == "Reservado" ? true:false}
+        />
+
+
+
+
+
         <label htmlFor="g3">Prefiero no decirlo</label><br />
 
         <label htmlFor="producto">Producto Favorito</label><br/>
             <select name="producto" id="producto" >
-                <option value="Jockey">Jockey</option>
-                <option value="Gorro">Gorro</option>
-                <option value="Polera">Polera</option>
+                <option onClick={(e)=>setProducto_fav(e.target.value)} value="Jockey">Jockey</option>
+                <option onClick={(e)=>setProducto_fav(e.target.value)} value="Gorro">Gorro</option>
+                <option onClick={(e)=>setProducto_fav(e.target.value)} value="Polera">Polera</option>
             </select><br/>
 
-        <input type="checkbox"      value={terminos_condiciones}/>
+
+
+
+
+        <input type="checkbox" 
+         onClick={(e)=>{if (e.target.checked == true){
+            setTerminos_condiciones("si")
+         }else if (e.target.checked == false){
+             setTerminos_condiciones("no")
+         }}} 
+         value={terminos_condiciones}/>
+
         <label htmlFor="">Acepta terminos y condiciones</label>
         <br />
         <a type="button" id="boton" className="btn btn-success mt-3" onClick={registrar}>Registro</a>

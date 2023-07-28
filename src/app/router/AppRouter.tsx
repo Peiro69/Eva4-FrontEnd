@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { Routes, Route } from '../../../node_modules/react-router-dom/dist/index'
+import { Eliminar } from '../Componentes/Eliminar'
 import { Formulario } from '../Componentes/Formulario'
 import { Introduccion } from '../Componentes/Introduccion'
 import { Mapa } from '../Componentes/Mapa'
@@ -18,7 +19,7 @@ export const AppRouter = () => {
         <Route path='/formulario' element={<Formulario/>}/>
         <Route path='/mostrar' element={<Registros/>}/>
         <Route path='/modificar/:idSocio' element={<Modificar/>}/>
-        <Route path='/eliminar/:idSocio' />
+        <Route path='/eliminar/:idSocio' element={<Eliminar/>} />
     </Routes>
   )
 }

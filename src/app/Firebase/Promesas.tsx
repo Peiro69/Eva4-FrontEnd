@@ -63,6 +63,6 @@ export const actualizarSocio = async(idSocio:string,s:Socio)=>{
       const docRef = doc(db,"personas",idSocio);
       await updateDoc(docRef,{...s});
 }
-export const eliminarPersona =async (idPersona:string) => {
-      await deleteDoc(doc(db,"personas",idPersona))
+export const eliminarSocio =async (idSocio:string) => {
+      await deleteDoc(doc(db,"personas",idSocio))
 }
