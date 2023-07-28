@@ -12,9 +12,11 @@ export const Formulario = () => {
     const [genero, setGenero] = useState("")
     const [producto_fav, setProducto_fav] = useState("Jockey")
     const [terminos_condiciones, setTerminos_condiciones] = useState("no")
+    const [errorEdad, setErrorEdad] = useState("")
 
 
     const registrar = ()=>{
+
 
         const s:Socio = {
             nombre,
@@ -33,7 +35,14 @@ export const Formulario = () => {
 
 
     } 
-
+    const ValidarEdad = (valor:string)=>{
+        setEdad(valor)
+        if (parseInt(edad)<0){
+            setErrorEdad("Debes ingresar un valor válido")
+        }else{
+            setErrorEdad("")
+        }
+    }
 
   return (
     <form className='text-center'>
@@ -59,8 +68,9 @@ export const Formulario = () => {
 
         <label htmlFor="">Edad</label><br />
         <input type="number"  
-        onChange={(e)=>setEdad(e.target.value)}
+        onChange={(e)=>ValidarEdad(e.target.value)}
         value={edad}/><br />
+        <span>{errorEdad}</span><br />
 
         <label htmlFor="">Genero</label><br />
 

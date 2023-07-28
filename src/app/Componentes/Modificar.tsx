@@ -14,6 +14,7 @@ export const Modificar = () => {
     const [producto_fav, setProducto_fav] = useState("")
     const [terminos_condiciones, setTerminos_condiciones] = useState("")
     const [idSocio, setIdSocio] = useState("")
+    const [errorEdad, setErrorEdad] = useState("")
 
     useEffect(() => {
       if (params.idSocio!=undefined){
@@ -54,6 +55,15 @@ export const Modificar = () => {
             alert("Actualizado")
         })
     }
+
+    const ValidarEdad = (valor:string)=>{
+        setEdad(valor)
+        if (parseInt(edad)<0){
+            setErrorEdad("Debes ingresar un valor válido")
+        }else{
+            setErrorEdad("")
+        }
+    }
     
     console.log(terminos_condiciones)
 
@@ -84,8 +94,9 @@ export const Modificar = () => {
 
         <label htmlFor="">Edad</label><br />
         <input type="number"  
-        onChange={(e)=>setEdad(e.target.value)}
+        onChange={(e)=>ValidarEdad(e.target.value)}
         value={edad}/><br />
+        <span>{errorEdad}</span><br />
 
         <input type="radio" 
         name="check" 
