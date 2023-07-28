@@ -1,6 +1,7 @@
 import React from 'react'
 import corona from "../imagenes/Logos/corona.png"
 import gorro from "../imagenes/Logos/gorra.png"
+import tienda from "../imagenes/tienda/la-tienda-de-las-gorras.jpg"
 
 export const Presentacion = () => {
   return (
@@ -17,7 +18,7 @@ export const Presentacion = () => {
       </h3>
       </div>
       <div className="col-md-6 my-5">
-          <img src="assets/imagenes/la-tienda-de-las-gorras.jpg" alt="Tienda" width="512px" height="470px"/>
+          <img src={tienda.src} alt="Tienda" width="512px" height="470px"/>
       </div>
     </div>
   )
